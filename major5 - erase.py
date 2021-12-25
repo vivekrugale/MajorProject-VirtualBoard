@@ -107,7 +107,8 @@ while(1):
         area = cv2.contourArea(c)
         
         draw = cv2.waitKey(1) & 0xFF
-        if draw == ord('d'):
+        #BLUE
+        if draw == ord('b'):
         
             # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
             if x1 == 0 and y1 == 0:
@@ -116,7 +117,96 @@ while(1):
             else:
                 if switch == 'Pen':
                     # Draw the line on the canvas
-                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [0,255,0,], 3)
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [255,0,0], 3)
+                    
+                else:
+                    cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
+        
+        #GREEN
+        elif draw == ord('g'):
+        
+            # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
+            if x1 == 0 and y1 == 0:
+                x1,y1= x2,y2
+                
+            else:
+                if switch == 'Pen':
+                    # Draw the line on the canvas
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [0,255,0], 3)
+                    
+                else:
+                    cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
+                    
+        elif draw == ord('r'):
+        
+            # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
+            if x1 == 0 and y1 == 0:
+                x1,y1= x2,y2
+                
+            else:
+                if switch == 'Pen':
+                    # Draw the line on the canvas
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [0,0,255], 3)
+                    
+                else:
+                    cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
+                    
+        #YELLOW
+        elif draw == ord('y'):
+        
+            # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
+            if x1 == 0 and y1 == 0:
+                x1,y1= x2,y2
+                
+            else:
+                if switch == 'Pen':
+                    # Draw the line on the canvas
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [0,255,255], 3)
+                    
+                else:
+                    cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
+                    
+        #PINK
+        elif draw == ord('p'):
+        
+            # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
+            if x1 == 0 and y1 == 0:
+                x1,y1= x2,y2
+                
+            else:
+                if switch == 'Pen':
+                    # Draw the line on the canvas
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [255,0,255], 3)
+                    
+                else:
+                    cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
+        
+        #CYAN
+        elif draw == ord('q'):
+        
+            # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
+            if x1 == 0 and y1 == 0:
+                x1,y1= x2,y2
+                
+            else:
+                if switch == 'Pen':
+                    # Draw the line on the canvas
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [255,255,0], 3)
+                    
+                else:
+                    cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
+        
+        #WHITE
+        elif draw == ord('w'):
+        
+            # If there were no previous points then save the detected x2,y2 coordinates as x1,y1. 
+            if x1 == 0 and y1 == 0:
+                x1,y1= x2,y2
+                
+            else:
+                if switch == 'Pen':
+                    # Draw the line on the canvas
+                    canvas = cv2.line(canvas, (x1,y1), (x2,y2), [255,255,255], 3)
                     
                 else:
                     cv2.circle(canvas, (x2, y2), 20, (0,0,0), -1)
@@ -143,6 +233,7 @@ while(1):
         cv2.circle(frame, (x1, y1), 20, (255,255,255), -1)
         frame[0: 50, 0: 50] = eraser_img
     else:
+        cv2.circle(frame, (x1, y1), 5, (255,255,255), -1)
         frame[0: 50, 0: 50] = pen_img
     
     # Merge the canvas and the frame.
